@@ -22,18 +22,13 @@ public class TodoRestController {
     return todoRepository.findAll();
   }
 
-  @PostMapping("/create")
+  @GetMapping("/create")
   public Todo create() {
     return todoRepository.save(new Todo("New Todo", "Details", false));
   }
 
   @PostMapping
   public Todo create(@RequestBody Todo todo) {
-    return todoRepository.save(todo);
-  }
-
-  @PutMapping("/{id}")
-  public Todo update(@PathVariable Long id, @RequestBody Todo todo) {
     return todoRepository.save(todo);
   }
 

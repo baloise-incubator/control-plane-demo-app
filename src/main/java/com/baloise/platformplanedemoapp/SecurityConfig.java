@@ -21,7 +21,7 @@ public class SecurityConfig {
     http.apply(AadWebApplicationHttpSecurityConfigurer.aadWebApplication())
             .and()
             .authorizeHttpRequests(auth -> auth
-                    .requestMatchers("/demo").authenticated()
+                    .requestMatchers("/todos").authenticated()
                     .anyRequest().permitAll()
             );
     return http.build();

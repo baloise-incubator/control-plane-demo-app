@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="de-CH">
+<head th:replace="~{header :: jscssinclude}"><title>Control Plane Demo</title></head>
+<body>
+<bal-app class="has-sticky-footer">
+    <header>
+        <div th:insert="~{navbar :: navbar}"></div>
+    </header>
+    <main>
+        <div class="container is-compact">
+            <bal-content>
+                <div th:switch="${todos}">
+                    <bal-heading th:case="null">No todos yet!</bal-heading>
+                    <bal-card style="margin-top: 40px;">
+                        <bal-card-content>
+                            <form id="todoForm" action="#" th:action="@{/addtodo}" th:object="${todo}" method="post">
+                                <bal-form-grid>
+                                    <bal-form-col size="half">
+                                        <bal-field required="true">
+                                            <bal-field-label required="true">Description</bal-field-label>
+                                            <bal-field-control>
+                                                <bal-input th:field="*{description}" id="description" name="description" placeholder="Enter description" required="true"></bal-input>
+                                            </bal-field-control>
+                                        </bal-field>
+                                    </bal-form-col>
+
+                                    <bal-form-col size="half">
+                                        <bal-field required="true">
+                                            <bal-field-label required="true">Details</bal-field-label>
+                                            <bal-field-control>
+                                                <bal-input th:field="*{details}" id="details" name="details" placeholder="Enter details"></bal-input>
+                                            </bal-field-control>
+                                        </bal-field>
+                                    </bal-form-col>
+                                </bal-form-grid>
+                            </form>
+                        </bal-card-content>
+                        <bal-card-actions position="right">
+                            <button class="button is-primary" form="todoForm" type="submit">Add todo</button>
+                        </bal-card-actions>
+                    </bal-card>
+                    <bal-card style="margin-top: 40px;">
+                        <bal-card-content>
+                            <div th:case="*">
+                                <bal-heading level="h2">Todos</bal-heading>
+                                <table class="table w-full is-striped is-hoverable p-none">
+                                    <thead>
+                                    <tr>
+                                        <th>Description</th>
+                                        <th>Details</th>
+                                        <th>Done</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr th:each="todo : ${todos}">
+                                        <td th:text="${todo.description}"></td>
+                                        <td th:text="${todo.details}"></td>
+                                        <td th:text="${todo.done}"></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </bal-card-content>
+                    </bal-card>
+                </div>
+            </bal-content>
+        </div>
+    </main>
+    <bal-footer hide-links hide-language-selection/>
+</bal-app>
+</body>
+</html>
