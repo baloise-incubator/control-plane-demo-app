@@ -11,7 +11,11 @@
         </bal-navbar-menu-start>
         <bal-navbar-menu-end>
             <bal-button-group>
-                <bal-tag color="info" th:text="${currentUser}"></bal-tag>
+                <bal-tag sec:authorize="isAuthenticated()" color="success" th:text="${currentUser}"></bal-tag>
+                <bal-button sec:authorize="isAnonymous()" color="tertiary-green" href="/oauth2/authorization/azure">Sign in</bal-button>
+                <form action="#" th:action="@{/logout}" method="post">
+                    <button class="button is-tertiary-red" type="submit" sec:authorize="isAuthenticated()">Sign out</button>
+                </form>
             </bal-button-group>
         </bal-navbar-menu-end>
     </bal-navbar-menu>

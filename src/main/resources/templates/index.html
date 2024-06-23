@@ -8,14 +8,61 @@
     </header>
     <bal-stage color="green" size="small">
         <bal-stage-body>
-            <bal-heading>Welcome to the</bal-heading>
-            <bal-heading> Control Plane Demo< App</bal-heading>
+            <bal-heading level="h1">Welcome to the Control Plane Demo App</bal-heading>
         </bal-stage-body>
     </bal-stage>
     <main class="container mt-xx-large">
         <bal-content>
-            <bal-label>Hello Platform Plane</bal-label>
-            <bal-text>Platform Plane Demo App</bal-text>
+            <bal-heading level="h2">Platform Plane Demo App</bal-heading>
+            <bal-card sec:authorize="isAnonymous()" fullheight="true" color="purple" flat="true">
+                <bal-card-content>
+                    <div class="flex justify-content-start flex-direction-column">
+                        <bal-heading level="h4" space="bottom">Hello Anonymous User!</bal-heading>
+                        <bal-text class="mb-normal">You are currently not logged in. Use either the button on the top right corner or click down below!</bal-text>
+                        <bal-button-group position="center" class="mt-auto">
+                            <bal-button expanded="true" href="/oauth2/authorization/azure">Sign in</bal-button>
+                        </bal-button-group>
+                    </div>
+                </bal-card-content>
+            </bal-card>
+            <bal-list sec:authorize="isAuthenticated()" border="">
+                <bal-list-item>
+                    <bal-list-item-icon>
+                        <bal-badge color="green" size="large" icon="info-circle">1</bal-badge>
+                    </bal-list-item-icon>
+                    <bal-list-item-content>
+                        <bal-list-item-title>Name</bal-list-item-title>
+                        <bal-list-item-subtitle th:text="${name}"></bal-list-item-subtitle>
+                    </bal-list-item-content>
+                </bal-list-item>
+                <bal-list-item>
+                    <bal-list-item-icon>
+                        <bal-badge color="yellow" size="large" icon="web">1</bal-badge>
+                    </bal-list-item-icon>
+                    <bal-list-item-content>
+                        <bal-list-item-title>Mail</bal-list-item-title>
+                        <bal-list-item-subtitle th:text="${mail}"></bal-list-item-subtitle>
+                    </bal-list-item-content>
+                </bal-list-item>
+                <bal-list-item>
+                    <bal-list-item-icon>
+                        <bal-badge size="large" icon="document">1</bal-badge>
+                    </bal-list-item-icon>
+                    <bal-list-item-content>
+                        <bal-list-item-title>Role</bal-list-item-title>
+                        <bal-list-item-subtitle th:text="${role}"></bal-list-item-subtitle>
+                    </bal-list-item-content>
+                </bal-list-item>
+                <bal-list-item>
+                    <bal-list-item-icon>
+                        <bal-badge color="purple" size="large" icon="plus">1</bal-badge>
+                    </bal-list-item-icon>
+                    <bal-list-item-content>
+                        <bal-list-item-title>Issuer</bal-list-item-title>
+                        <bal-list-item-subtitle th:text="${issuer}"></bal-list-item-subtitle>
+                    </bal-list-item-content>
+                </bal-list-item>
+            </bal-list>
         </bal-content>
     </main>
     <bal-footer hide-links hide-language-selection/>
