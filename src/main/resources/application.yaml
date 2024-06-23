@@ -8,3 +8,5 @@ spring:
         credential:
           client-id: ${CLIENT_ID}
           client-secret: ${CLIENT_SECRET}
+proxy:
+  enabled: false
