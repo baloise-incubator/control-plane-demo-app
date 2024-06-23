@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="de-CH">
+<head th:replace="~{header :: jscssinclude}"><title>Control Plane Demo</title></head>
+<bal-navbar th:fragment="navbar">
+    <bal-navbar-brand href="/">Control Plane Demo</bal-navbar-brand>
+    <bal-navbar-menu>
+        <bal-navbar-menu-start>
+            <bal-button th:href="@{/demo}">
+                SSO Demo
+            </bal-button>
+        </bal-navbar-menu-start>
+        <bal-navbar-menu-end>
+            <bal-button-group>
+                <bal-tag color="info">SHOW USER NAME HERE</bal-tag>
+            </bal-button-group>
+        </bal-navbar-menu-end>
+    </bal-navbar-menu>
+</bal-navbar>
+</html>

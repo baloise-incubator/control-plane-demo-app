@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="de-CH">
+<head th:replace="~{header :: jscssinclude}"><title>Control Plane Demo</title></head>
+<body>
+<bal-app class="has-sticky-footer">
+    <header>
+        <div th:insert="~{navbar :: navbar}"></div>
+    </header>
+    <bal-stage color="green" size="small">
+        <bal-stage-body>
+            <bal-heading>Welcome to the</bal-heading>
+            <bal-heading> Control Plane Demo< App</bal-heading>
+        </bal-stage-body>
+    </bal-stage>
+    <main class="container mt-xx-large">
+        <bal-content>
+            <bal-label>Hello Platform Plane</bal-label>
+            <bal-text>Platform Plane Demo App</bal-text>
+        </bal-content>
+    </main>
+    <bal-footer hide-links hide-language-selection/>
+</bal-app>
+</body>
+</html>
