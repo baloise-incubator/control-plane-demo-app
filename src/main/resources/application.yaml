@@ -8,5 +8,13 @@ spring:
         credential:
           client-id: ${CLIENT_ID}
           client-secret: ${CLIENT_SECRET}
+  datasource:
+    hikari:
+      connection-timeout: 30000
+      maximum-pool-size: 5
+    url: jdbc:postgresql://bal-control-plane-postgres.postgres.database.azure.com:5432/control-plane-db
+    username: postgres
+    azure:
+      passwordless-enabled: true
 proxy:
   enabled: false
