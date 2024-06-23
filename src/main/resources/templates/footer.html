@@ -1,0 +1,9 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="de-CH">
+<head th:replace="~{header :: jscssinclude}"><title>Footer</title></head>
+<bal-footer th:fragment="footer" hide-links hide-language-selection>
+    <div class="container">
+        <p>Version: <span th:text="${build.version} + '-' + ${git.shortCommitId}">Version</span></p>
+    </div>
+</bal-footer>
+</html>

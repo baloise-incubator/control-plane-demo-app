@@ -1,5 +1,6 @@
 package com.baloise.platformplanedemoapp.todo;
 
+import com.baloise.platformplanedemoapp.SharedTemplateService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
@@ -19,22 +20,11 @@ import java.util.Collection;
 public class ThymeleafTodoController {
 
   private final TodoRepository todoRepository;
+  private final SharedTemplateService sharedTemplateService;
 
   @GetMapping("/todos")
   public String todos(final Model model) {
-    SecurityContext context = SecurityContextHolder.getContext();
-    if(context.getAuthentication().getPrincipal() instanceof DefaultOidcUser user) {
-      String userName = user.getName();
-      String mail = user.getPreferredUsername();
-      model.addAttribute("currentUser", userName + " (" + mail + ")");
-      Collection<? extends GrantedAuthority> authorities = user.getAuthorities();
-      model.addAttribute("role", authorities.iterator().next());
-      model.addAttribute("issuer", "Azure EntraID");
-      model.addAttribute("mail", mail);
-      model.addAttribute("name", userName);
-    } else {
-      model.addAttribute("currentUser", "Anonymous");
-    }
+    sharedTemplateService.addSharedProperties(model);
     model.addAttribute("todos", todoRepository.findAll());
     model.addAttribute("todo", new Todo(null, null, false));
     return "todos";
