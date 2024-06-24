@@ -17,8 +17,10 @@ spring:
       maximum-pool-size: 5
     url: ${JDBC_URL}
     username: ${JDBC_USER}
-    azure:
-      passwordless-enabled: ${PASSWORDLESS_ENAB}
     password: ${JDBC_PASSWORD}?
+    azure:
+      passwordless-enabled: ${PASSWORDLESS_ENABLED:false}
+      credential:
+        managed-identity-enabled: ${MANAGED_IDENTITY_ENABLED:false}
 proxy:
   enabled: false
