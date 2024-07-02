@@ -24,3 +24,7 @@ spring:
         managed-identity-enabled: ${MANAGED_IDENTITY_ENABLED:false}
 proxy:
   enabled: false
+forwarded-header:
+  enabled: ${FORWARDED_HEADER_ENABLED:false}
+server:
+  forward-headers-strategy: ${FORWARDED_HEADERS_STRATEGY:native}
