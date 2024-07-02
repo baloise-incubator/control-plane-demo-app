@@ -28,3 +28,8 @@ forwarded-header:
   enabled: ${FORWARDED_HEADER_ENABLED:false}
 server:
   forward-headers-strategy: ${FORWARDED_HEADERS_STRATEGY:native}
+logging:
+  level:
+    org:
+      springframework:
+        security: DEBUG
