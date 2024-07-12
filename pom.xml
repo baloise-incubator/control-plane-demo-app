@@ -50,7 +50,7 @@
         <dependency>
             <groupId>com.baloise.webjars</groupId>
             <artifactId>baloise-design-system</artifactId>
-            <version>0.0.4</version>
+            <version>16.2.1</version>
         </dependency>
         <dependency>
             <groupId>org.webjars</groupId>
